@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddProjectPage.css"
 
-function AddProjectPage() {
+function AddProjectPage({getprojects}) {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -24,7 +24,7 @@ function AddProjectPage() {
 
                 navigate("/projects"); // redirect to project list
                 // navigate(`/projects/${response.data._id}`); // redirect to project page
-
+                getprojects()
                 // clear form...
                 setTitle("");
                 setDescription("");

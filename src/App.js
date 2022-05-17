@@ -11,13 +11,17 @@ function App() {
   
   const [projects, setProjects] = useState(null);
 
-  useEffect(() => {
+  const getProject = () => {
     axios.get(`${process.env.REACT_APP_API_URL}/projects`)
-      .then( response => {
-        setProjects(response.data);
-      })
-      .catch( e => console.log("error getting projects from API...", e))
-  }, []);
+    .then( response => {
+      setProjects(response.data);
+    })
+    .catch( e => console.log("error getting projects from API...", e))
+  }
+
+  useEffect(() => {
+   getProject();
+  }, [projects]);
 
   return (
     <div className="App">
@@ -26,8 +30,8 @@ function App() {
       <Routes>
         <Route path='/' element={<h1>Welcome</h1>} />
         <Route path='/projects' element={<ProjectListPage projects={projects} />} />
-        <Route path='/projects/create' element={<AddProjectPage />} />
-        <Route path='/projects/:projectId/edit' element={<EditProjectPage projects={projects} />} />
+        <Route path='/projects/create' element={<AddProjectPage getprojects={getProject} />} />
+        <Route path='/projects/:projectId/edit' element={<EditProjectPage projects={projects} getprojects={getProject} />} />
       </Routes>
     </div>
   );

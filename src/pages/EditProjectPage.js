@@ -12,7 +12,7 @@ function EditProjectPage(props) {
     const projectDetails = props.projects.find( project => project._id === projectId); // get the details of the project that we're trying to edit
 
     const [title, setTitle] = useState(projectDetails.title);
-    const [description, setDescription] = useState();
+    const [description, setDescription] = useState(projectDetails.description);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,6 +28,17 @@ function EditProjectPage(props) {
                 // navigate(`/projects/${response.data._id}`); // redirect to project page
             })
             .catch(e => console.log("error updating project...", e));
+    }
+
+    const handleDelete = (e) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/projects/${projectId}`)
+        .then(response => {
+            console.log(">>>>>>>>>>>>>>>>>>>>", response)
+            navigate("/projects"); 
+            props.getprojects()
+
+        })
+        .catch(e => console.log("error updating project...", e));
     }
 
     return (
@@ -61,6 +72,8 @@ function EditProjectPage(props) {
                 <button type="submit">Update</button>
 
             </form>
+
+            <button onClick={handleDelete}>Delete</button>
 
         </section>
     )

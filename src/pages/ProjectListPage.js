@@ -4,13 +4,15 @@ import "./ProjectListPage.css"
 
 function ProjectListPage(props){
 
+ 
     const renderProjects = () => {
         const result = props.projects.map( (element) => {
             return (
                 <div key={element._id} className="project-summary box">
                     <p>{element.title}</p>
                     <NavLink to="/">More details</NavLink> |&nbsp;
-                    <NavLink to={`/projects/${element._id}/edit`}>Edit</NavLink>
+                    <NavLink to={`/projects/${element._id}/edit`}>Edit or Delete</NavLink>
+                    
                 </div>
             )
         });
