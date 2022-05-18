@@ -6,6 +6,7 @@ import ProjectListPage from './pages/ProjectListPage';
 import { useEffect, useState } from "react";
 import AddProjectPage from "./pages/AddProjectPage";
 import EditProjectPage from "./pages/EditProjectPage";
+import DeleteProjectPage from "./pages/DeleteProjectPage";
 
 function App() {
   
@@ -21,7 +22,7 @@ function App() {
 
   useEffect(() => {
    getProject();
-  }, [projects]);
+  }, []);
 
   return (
     <div className="App">
@@ -32,6 +33,7 @@ function App() {
         <Route path='/projects' element={<ProjectListPage projects={projects} />} />
         <Route path='/projects/create' element={<AddProjectPage getprojects={getProject} />} />
         <Route path='/projects/:projectId/edit' element={<EditProjectPage projects={projects} getprojects={getProject} />} />
+        <Route path='/projects/:projectId/delete' element={<DeleteProjectPage projects={projects} getprojects={getProject} />} />
       </Routes>
     </div>
   );

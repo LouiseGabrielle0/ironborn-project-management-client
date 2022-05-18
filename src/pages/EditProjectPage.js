@@ -30,16 +30,6 @@ function EditProjectPage(props) {
             .catch(e => console.log("error updating project...", e));
     }
 
-    const handleDelete = (e) => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/projects/${projectId}`)
-        .then(response => {
-            console.log(">>>>>>>>>>>>>>>>>>>>", response)
-            navigate("/projects"); 
-            props.getprojects()
-
-        })
-        .catch(e => console.log("error updating project...", e));
-    }
 
     return (
         <section className="EditProjectPage">
@@ -73,7 +63,6 @@ function EditProjectPage(props) {
 
             </form>
 
-            <button onClick={handleDelete}>Delete</button>
 
         </section>
     )

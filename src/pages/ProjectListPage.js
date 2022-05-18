@@ -11,7 +11,8 @@ function ProjectListPage(props){
                 <div key={element._id} className="project-summary box">
                     <p>{element.title}</p>
                     <NavLink to="/">More details</NavLink> |&nbsp;
-                    <NavLink to={`/projects/${element._id}/edit`}>Edit or Delete</NavLink>
+                    <NavLink to={`/projects/${element._id}/edit`}>Edit</NavLink> |&nbsp;
+                    <NavLink to={`/projects/${element._id}/delete`}>Delete</NavLink>
                     
                 </div>
             )
