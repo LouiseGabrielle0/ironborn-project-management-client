@@ -5,7 +5,7 @@ import {AuthContext} from '../context/auth.context'
 function Navbar(){
 
   
-    const {isLoggedIn, isLoading, user} = useContext(AuthContext) //returns an object which can be stored in a variable or can use object destruction
+    const {isLoggedIn, isLoading, user, logOutUser} = useContext(AuthContext) //returns an object which can be stored in a variable or can use object destruction
     
     return (
         <nav>
@@ -18,13 +18,18 @@ function Navbar(){
             } */} 
             
             {isLoggedIn &&
-                <span> Welcome</span>
-                }
+            <>
+                <span> Welcome {user.email} </span>
+                <button onClick={() => {logOutUser()}}>Logout</button>
+              </>  }
             {!isLoggedIn &&
             <>
                 <NavLink to="/login">Login</NavLink> |
                 <NavLink to="/signup">Sign Up</NavLink> 
                 </>
+                }
+            {isLoading && 
+                <span> Loading.... </span>
                 }
         </nav>
     );

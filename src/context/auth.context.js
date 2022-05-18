@@ -64,13 +64,25 @@ authenticateUser();
     }
   };
 
+  const removeToken = () => {                   
+    // Upon logout, remove the token from the localStorage
+    localStorage.removeItem("authToken");
+  }
+ 
+  const logOutUser = () => {                 
+    // To log out the user, remove the token
+    removeToken();
+    // and update the state variables    
+    authenticateUser(); // checks if there is a token - there isn't one so this will reset the states 
+  }  
+
   useEffect(() => {
     // to be updated in next step
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser }}
+      value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, removeToken, logOutUser}}
     >
       {props.children}
     </AuthContext.Provider>
