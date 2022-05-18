@@ -9,7 +9,8 @@ import EditProjectPage from "./pages/EditProjectPage";
 import DeleteProjectPage from "./pages/DeleteProjectPage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
-import IsPrivate from "./components/isPrivate";
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
 
 function App() {
   const [projects, setProjects] = useState(null);
@@ -35,12 +36,7 @@ function App() {
         <Route path="/" element={<h1>Welcome</h1>} />
         <Route
           path="/projects"
-          element={
-            <IsPrivate>
-              {" "}
-              <ProjectListPage projects={projects} />{" "}
-            </IsPrivate>
-          }
+          element={<ProjectListPage projects={projects} />}
         />
         <Route
           path="/projects/create"
@@ -76,8 +72,22 @@ function App() {
           }
         />
 
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="login" element={<LoginPage />} />
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              <SignUpPage />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <IsAnon>
+              <LoginPage />
+            </IsAnon>
+          }
+        />
       </Routes>
     </div>
   );
