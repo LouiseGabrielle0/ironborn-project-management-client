@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import AddProjectPage from "./pages/AddProjectPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import DeleteProjectPage from "./pages/DeleteProjectPage";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage"
 
 function App() {
   
@@ -34,6 +36,9 @@ function App() {
         <Route path='/projects/create' element={<AddProjectPage getprojects={getProject} />} />
         <Route path='/projects/:projectId/edit' element={<EditProjectPage projects={projects} getprojects={getProject} />} />
         <Route path='/projects/:projectId/delete' element={<DeleteProjectPage projects={projects} getprojects={getProject} />} />
+        
+        <Route path="/signup" element={<SignUpPage/>}/>
+        <Route path="login" element={<LoginPage/>}/>
       </Routes>
     </div>
   );

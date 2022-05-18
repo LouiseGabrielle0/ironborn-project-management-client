@@ -23,7 +23,7 @@ function Navbar(){
             {!isLoggedIn &&
             <>
                 <NavLink to="/login">Login</NavLink> |
-                <NavLink to="/singup">Sign Up</NavLink> 
+                <NavLink to="/signup">Sign Up</NavLink> 
                 </>
                 }
         </nav>
