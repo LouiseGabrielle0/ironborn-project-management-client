@@ -16,6 +16,11 @@ function AuthProviderWrapper(props) {
 
   // To enable access to the values exposed through the Provider’s (AuthContext.Provider) value prop, we have to wrap the AuthProviderWrapper around other components.
 
+useEffect(() => {
+authenticateUser();
+}, [])
+
+
   /* 
     Functions for handling the authentication status (isLoggedIn, isLoading, user)
     will be added here later in the next step
@@ -72,6 +77,6 @@ function AuthProviderWrapper(props) {
   );
 }
 
-export { AuthProviderWrapper, AuthContext };
+export { AuthProviderWrapper, AuthContext}; 
 
 // ^^^ exporting the component

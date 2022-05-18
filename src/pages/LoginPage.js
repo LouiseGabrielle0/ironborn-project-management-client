@@ -10,10 +10,11 @@ function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+
   
   const navigate = useNavigate();
 
-  const {storeToken} = useContext(AuthContext); // object decrunstrction - we are getting the function out the stored context
+  const {storeToken, authenticateUser} = useContext(AuthContext); // object decrunstrction - we are getting the function out the stored context
 
 //   const handleEmail = (e) => setEmail(e.target.value);
 //   const handlePassword = (e) => setPassword(e.target.value);
@@ -30,7 +31,9 @@ const handleLoginSubmit = (e) => {
       // with the JWT string ->  response.data.authToken
         console.log('JWT token', response.data.authToken );
         storeToken(response.data.authToken) // this function sets the localstorage to store the authtoken
-        navigate('/');                             // <== ADD      
+        authenticateUser() 
+        navigate('/');                             
+             
       })
       .catch((error) => {
           //Login failed
